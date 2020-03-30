@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rdp.template.repository.UserMasterMapper">
+  <resultMap id="BaseResultMap" type="com.rdp.template.domain.UserMaster">
+    <id column="User_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="User_Name" jdbcType="NVARCHAR" property="userName" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="Branch_Code" jdbcType="INTEGER" property="branchCode" />
+    <result column="IP_Address" jdbcType="VARCHAR" property="ipAddress" />
+    <result column="Reader_Type" jdbcType="SMALLINT" property="readerType" />
+    <result column="Email_Add" jdbcType="NVARCHAR" property="emailAdd" />
+    <result column="Password_Exprity_Date" jdbcType="DATE" property="passwordExprityDate" />
+    <result column="Status_Flag" jdbcType="TINYINT" property="statusFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    User_ID, User_Name, Password, Branch_Code, IP_Address, Reader_Type, Email_Add, Password_Exprity_Date, 
+    Status_Flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbLOG_User_Master
+    where User_ID = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbLOG_User_Master
+    where User_ID = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.rdp.template.domain.UserMaster">
+    insert into tbLOG_User_Master (User_ID, User_Name, Password, 
+      Branch_Code, IP_Address, Reader_Type, 
+      Email_Add, Password_Exprity_Date, Status_Flag
+      )
+    values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=NVARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{branchCode,jdbcType=INTEGER}, #{ipAddress,jdbcType=VARCHAR}, #{readerType,jdbcType=SMALLINT}, 
+      #{emailAdd,jdbcType=NVARCHAR}, #{passwordExprityDate,jdbcType=DATE}, #{statusFlag,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.rdp.template.domain.UserMaster">
+    insert into tbLOG_User_Master
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        User_ID,
+      </if>
+      <if test="userName != null">
+        User_Name,
+      </if>
+      <if test="password != null">
+        Password,
+      </if>
+      <if test="branchCode != null">
+        Branch_Code,
+      </if>
+      <if test="ipAddress != null">
+        IP_Address,
+      </if>
+      <if test="readerType != null">
+        Reader_Type,
+      </if>
+      <if test="emailAdd != null">
+        Email_Add,
+      </if>
+      <if test="passwordExprityDate != null">
+        Password_Exprity_Date,
+      </if>
+      <if test="statusFlag != null">
+        Status_Flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=NVARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="branchCode != null">
+        #{branchCode,jdbcType=INTEGER},
+      </if>
+      <if test="ipAddress != null">
+        #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="readerType != null">
+        #{readerType,jdbcType=SMALLINT},
+      </if>
+      <if test="emailAdd != null">
+        #{emailAdd,jdbcType=NVARCHAR},
+      </if>
+      <if test="passwordExprityDate != null">
+        #{passwordExprityDate,jdbcType=DATE},
+      </if>
+      <if test="statusFlag != null">
+        #{statusFlag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rdp.template.domain.UserMaster">
+    update tbLOG_User_Master
+    <set>
+      <if test="userName != null">
+        User_Name = #{userName,jdbcType=NVARCHAR},
+      </if>
+      <if test="password != null">
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="branchCode != null">
+        Branch_Code = #{branchCode,jdbcType=INTEGER},
+      </if>
+      <if test="ipAddress != null">
+        IP_Address = #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="readerType != null">
+        Reader_Type = #{readerType,jdbcType=SMALLINT},
+      </if>
+      <if test="emailAdd != null">
+        Email_Add = #{emailAdd,jdbcType=NVARCHAR},
+      </if>
+      <if test="passwordExprityDate != null">
+        Password_Exprity_Date = #{passwordExprityDate,jdbcType=DATE},
+      </if>
+      <if test="statusFlag != null">
+        Status_Flag = #{statusFlag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where User_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rdp.template.domain.UserMaster">
+    update tbLOG_User_Master
+    set User_Name = #{userName,jdbcType=NVARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      Branch_Code = #{branchCode,jdbcType=INTEGER},
+      IP_Address = #{ipAddress,jdbcType=VARCHAR},
+      Reader_Type = #{readerType,jdbcType=SMALLINT},
+      Email_Add = #{emailAdd,jdbcType=NVARCHAR},
+      Password_Exprity_Date = #{passwordExprityDate,jdbcType=DATE},
+      Status_Flag = #{statusFlag,jdbcType=TINYINT}
+    where User_ID = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>
