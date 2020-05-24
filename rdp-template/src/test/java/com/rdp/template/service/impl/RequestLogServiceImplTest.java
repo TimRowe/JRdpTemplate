@@ -48,4 +48,7 @@ public class RequestLogServiceImplTest {
     @Test
     public void batchInsert() {
     }
+
+
+
 }
