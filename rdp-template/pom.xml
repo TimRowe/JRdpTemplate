@@ -6,6 +6,7 @@
         <artifactId>rdp-common</artifactId>
         <groupId>com.rdp</groupId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <version>1.0</version>
