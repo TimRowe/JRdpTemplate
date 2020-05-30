@@ -49,7 +49,7 @@ public class TestController {
     }
 
 
-    @GetMapping(value = "/test1")
+    @GetMapping(value = "/testDevops")
     public String testDevops() {
         return "success";
     }
